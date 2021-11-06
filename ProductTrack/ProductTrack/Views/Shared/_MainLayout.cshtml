@@ -18,13 +18,31 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">WebSiteName</a>
+                <a class="navbar-brand" href="#">Dream Car</a>
             </div>
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Page 1</a></li>
-                <li><a href="#">Page 2</a></li>
-                <li><a href="#">Page 3</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Category
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="~/Category/Index">Categories</a></li>
+                        <li><a href="~/Category/AddNewCategory">New Category</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Product
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="~/Product/Index">Products</a></li>
+                        <li><a href="~/Product/AmddNewProduct">New Product</a></li>
+                    </ul>
+                </li>
+                <li><a href="~/Views/Customer/Index">Customers</a></li>
             </ul>
         </div>
     </nav>
