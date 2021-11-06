@@ -1,0 +1,28 @@
+﻿@using ProductTrack.Models.Entity
+@model List<TBL_Customers>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>Customer ID</th>
+        <th>Customer Name</th>
+        <th>Operation</th>
+    </tr>
+    <tbody>
+        @foreach (TBL_Customers customer in Model)
+        {
+            <tr>
+                <td>@customer.CustomerID</td>
+                <td>@customer.CustomerName</td>
+                <td>
+                    <a href="~/Views/Customer/Pacify.cshtml" class="btn btn-danger"><span class="glyphicon glyphicon-ban-circle"></span></a>
+                    <a href="~/Views/Customer/Update.cshtml" class="btn btn-primary"><span class="glyphicon glyphicon-refresh"></span></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
