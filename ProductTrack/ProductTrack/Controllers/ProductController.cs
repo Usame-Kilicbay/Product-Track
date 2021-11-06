@@ -9,12 +9,27 @@ namespace ProductTrack.Controllers
 {
     public class ProductController : Controller
     {
-        ProductTrackEntities ProductTrackEntities = new ProductTrackEntities();
+        private ProductTrackEntities ProductTrackEntities = new ProductTrackEntities();
 
         // GET: Product
         public ActionResult Index()
         {
             return View(ProductTrackEntities.TBL_Products.ToList());
+        }
+
+        [HttpGet]
+        public ActionResult AmddNewProduct()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddNewProduct(TBL_Products products)
+        {
+            ProductTrackEntities.TBL_Products.Add(products);
+            ProductTrackEntities.SaveChanges();
+
+            return View();
         }
     }
 }
