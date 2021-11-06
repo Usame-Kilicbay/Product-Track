@@ -1,8 +1,40 @@
-﻿
+﻿@using ProductTrack.Models.Entity
+@model List<TBL_Categories>
 @{
     ViewBag.Title = "AddNewProduct";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-<h2>AddNewProduct</h2>
+<form method="post">
+    <div class="form-group">
+        <label for="product-name">Product Name:</label>
+        <input id="product-name" type="email" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="product-price">Product Price:</label>
+        <input id="product-price" type="number" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="product-category">Product Category:</label>
+        <select id="product-name" class="form-control">
+            <option>Sport</option>
+            <option>Cabrio</option>
+            <option>Casual</option>
+            <option>SUV</option>
+        </select>
+
+        @*<select id="product-name" class="form-control">
+                @foreach (TBL_Categories category in Model)
+                {
+                    <option>@category.CategoryName</option>
+                }
+            </select>*@
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">
+            <span class="glyphicon glyphicon-plus"></span>
+            &nbsp;Add
+        </button>
+    </div>
+</form>
 
