@@ -18,7 +18,7 @@ namespace ProductTrack.Controllers
         }
 
         [HttpGet]
-        public ActionResult AmddNewProduct()
+        public ActionResult AddNewProduct()
         {
             return View();
         }
