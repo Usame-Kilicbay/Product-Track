@@ -26,5 +26,10 @@ namespace ProductTrack.Controllers
 
             return View();
         }
+
+        public ActionResult Help()
+        {
+            return View();
+        }
     }
 }
