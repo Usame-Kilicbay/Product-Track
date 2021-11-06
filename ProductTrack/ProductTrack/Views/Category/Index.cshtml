@@ -1,0 +1,23 @@
+﻿@using ProductTrack.Models.Entity
+@model List<TBL_Categories>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered" >
+    <tr>
+        <th>Category ID</th>
+        <th>Category Name</th>
+    </tr>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CategoryID</td>
+                <td>@item.CategoryName</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
