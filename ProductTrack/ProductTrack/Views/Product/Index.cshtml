@@ -11,15 +11,20 @@
         <th>Product Name</th>
         <th>Product Category</th>
         <th>Product Price</th>
+        <th>Operation</th>
     </tr>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (TBL_Products product in Model)
         {
             <tr>
-                <td>@item.ProductID</td>
-                <td>@item.ProductName</td>
-                <td>@item.ProductCategory</td>
-                <td>@item.ProductPrice</td>
+                <td>@product.ProductID</td>
+                <td>@product.ProductName</td>
+                <td>@product.ProductCategory</td>
+                <td>@product.ProductPrice</td>
+                <td>
+                    <a href="~/Views/Product/Pacify.cshtml/@product.ProductID" class="btn btn-danger"><span class="glyphicon glyphicon-ban-circle"></span></a>
+                    <a href="~/Views/Product/Update.cshtml/@product.ProductID" class="btn btn-primary"><span class="glyphicon glyphicon-refresh"></span></a>
+                </td>
             </tr>
         }
     </tbody>
