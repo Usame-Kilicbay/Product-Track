@@ -20,16 +20,27 @@ namespace ProductTrack.Controllers
         [HttpGet]
         public ActionResult AddNewProduct()
         {
+            List<SelectListItem> items = (from i in ProductTrackEntities.TBL_Categories.ToList()
+                                          select new SelectListItem
+                                          {
+                                              Value = i.CategoryID.ToString(),
+                                              Text = i.CategoryName
+                                          }).ToList();
+
+            ViewBag.categories = items;
+
             return View();
         }
 
         [HttpPost]
         public ActionResult AddNewProduct(TBL_Products products)
         {
+            TBL_Categories category = ProductTrackEntities.TBL_Categories.Where(c => c.CategoryID == products.TBL_Categories.CategoryID).FirstOrDefault();
+            products.TBL_Categories = category;
             ProductTrackEntities.TBL_Products.Add(products);
             ProductTrackEntities.SaveChanges();
 
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }
