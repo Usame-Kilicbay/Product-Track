@@ -5,23 +5,54 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-<table class="table table-bordered">
-    <tr>
+<table class="table table-bordered table-hover">
+    <tr class="success">
         <th>Customer ID</th>
         <th>Customer Name</th>
-        <th>Operation</th>
+        <th>Customer Status</th>
+        <th>Pacify/Update</th>
     </tr>
     <tbody>
         @foreach (TBL_Customers customer in Model)
         {
-            <tr>
-                <td>@customer.CustomerID</td>
-                <td>@customer.CustomerName</td>
-                <td>
-                    <a href="~/Views/Customer/Pacify.cshtml" class="btn btn-danger"><span class="glyphicon glyphicon-ban-circle"></span></a>
-                    <a href="~/Views/Customer/Update.cshtml" class="btn btn-primary"><span class="glyphicon glyphicon-refresh"></span></a>
-                </td>
-            </tr>
+            if (customer.CustomerStatus == true)
+            {
+                <tr class="success">
+                    <td>@customer.CustomerID</td>
+                    <td>@customer.CustomerName</td>
+                    <td>@customer.CustomerStatus</td>
+                    <td>
+                        <a href="~/Customer/PacifyCustomer/@customer.CustomerID" class="btn btn-danger"><span class="glyphicon glyphicon-ban-circle"></span></a>
+                        <a href="~/Customer/LoadCustomer/@customer.CustomerID" class="btn btn-warning"><span class="glyphicon glyphicon-refresh"></span></a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<a href="/Customer/AddNewCustomer" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>&nbsp; New Customer</a>
+<table class="table table-bordered table-hover" style="margin-top:2em">
+    <tr class="danger">
+        <th>Customer ID</th>
+        <th>Customer Name</th>
+        <th>Customer Status</th>
+        <th>Activate/Update</th>
+    </tr>
+    <tbody>
+        @foreach (TBL_Customers customer in Model)
+        {
+            if (customer.CustomerStatus == false)
+            {
+                <tr class="danger">
+                    <td>@customer.CustomerID</td>
+                    <td>@customer.CustomerName</td>
+                    <td>@customer.CustomerStatus</td>
+                    <td>
+                        <a href="/Customer/ActivateCustomer/@customer.CustomerID" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span></a>
+                        <a href="/Customer/UpdateCustomer/@customer.CustomerID" class="btn btn-warning"><span class="glyphicon glyphicon-refresh"></span></a>
+                    </td>
+                </tr>
+            }
         }
     </tbody>
 </table>

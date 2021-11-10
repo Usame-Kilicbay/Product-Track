@@ -1,0 +1,23 @@
+﻿@model ProductTrack.Models.Entity.TBL_Customers
+@{
+    ViewBag.Title = "LoadCustomer";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("UpdateCustomer", "Customer", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="customer-id">Customer ID</label>
+        @Html.TextBoxFor(c => c.CustomerID, new { @id = "customer-id", @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label for="customer-name">Customer Name</label>
+        @Html.TextBoxFor(c => c.CustomerName, new { @id = "customer-name", @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <button class="btn btn-warning">
+            <span class="glyphicon glyphicon-refresh"></span>
+            &nbsp;Update
+        </button>
+    </div>
+}

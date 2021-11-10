@@ -5,28 +5,63 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-<table class="table table-bordered">
-    <tr>
+<table class="table table-bordered table-hover">
+    <tr class="success">
         <th>Product ID</th>
         <th>Product Name</th>
         <th>Product Category</th>
         <th>Product Price</th>
-        <th>Operation</th>
+        <th>Product Status</th>
+        <th>Pacify / Update</th>
     </tr>
     <tbody>
         @foreach (TBL_Products product in Model)
         {
-            <tr>
-                <td>@product.ProductID</td>
-                <td>@product.ProductName</td>
-                <td>@product.TBL_Categories.CategoryName</td>
-                <td>@product.ProductPrice</td>
-                <td>
-                    <a href="~/Views/Product/Pacify.cshtml/@product.ProductID" class="btn btn-danger"><span class="glyphicon glyphicon-ban-circle"></span></a>
-                    <a href="~/Views/Product/Update.cshtml/@product.ProductID" class="btn btn-primary"><span class="glyphicon glyphicon-refresh"></span></a>
-                </td>
-            </tr>
+            if (product.ProductStatus == true)
+            {
+                <tr class="success">
+                    <td>@product.ProductID</td>
+                    <td>@product.ProductName</td>
+                    <td>@product.TBL_Categories.CategoryName</td>
+                    <td>@product.ProductPrice</td>
+                    <td>@product.ProductStatus</td>
+                    <td>
+                        <a href="~/Product/PacifyProduct/@product.ProductID" class="btn btn-danger"><span class="glyphicon glyphicon-ban-circle"></span></a>
+                        <a href="~/Product/LoadProduct/@product.ProductID" class="btn btn-warning"><span class="glyphicon glyphicon-refresh"></span></a>
+                    </td>
+                </tr>
+            }
         }
     </tbody>
 </table>
 <a href="/Product/AddNewProduct" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>&nbsp; New Product</a>
+<br>
+<table class="table table-bordered table-hover" style="margin-top: 2em">
+    <tr class="danger">
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Product Category</th>
+        <th>Product Price</th>
+        <th>Product Status</th>
+        <th>Activate / Update</th>
+    </tr>
+    <tbody>
+        @foreach (TBL_Products product in Model)
+        {
+            if (product.ProductStatus == false)
+            {
+                <tr class="danger">
+                    <td>@product.ProductID</td>
+                    <td>@product.ProductName</td>
+                    <td>@product.TBL_Categories.CategoryName</td>
+                    <td>@product.ProductPrice</td>
+                    <td>@product.ProductStatus</td>
+                    <td>
+                        <a href="~/Product/ActivateProduct/@product.ProductID" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span></a>
+                        <a href="~/Product/LoadProduct/@product.ProductID" class="btn btn-warning"><span class="glyphicon glyphicon-refresh"></span></a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

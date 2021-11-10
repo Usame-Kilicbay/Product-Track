@@ -1,0 +1,33 @@
+﻿@model ProductTrack.Models.Entity.TBL_Products
+@{
+    ViewBag.Title = "LoadProduct";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("UpdateProduct", "Product", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(p => p.ProductID)
+        @Html.TextBoxFor(p => p.ProductID, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p => p.ProductName)
+        @Html.TextBoxFor(p => p.ProductName, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p => p.ProductCategory)
+        @Html.DropDownListFor(p => p.TBL_Categories.CategoryID, (List<SelectListItem>)ViewBag.categories, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p => p.ProductPrice)
+        @Html.TextBoxFor(p => p.ProductPrice, new { @class = "form-control" })
+    </div>
+    @*<div class="form-group">
+        @Html.LabelFor(p => p.ProductStatus)
+        @Html.CheckBoxFor(p => (bool)p.ProductStatus)
+    </div>*@
+    <div class="form-group">
+        <button class="btn btn-warning"><span class="glyphicon glyphicon-refresh"></span>&nbsp; Update</button>
+    </div>
+}
+
