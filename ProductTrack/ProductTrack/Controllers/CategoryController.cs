@@ -24,12 +24,45 @@ namespace ProductTrack.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddNewCateogry(TBL_Categories categories)
+        public ActionResult AddNewCategory(TBL_Categories category)
         {
-            ProductTrackEntities.TBL_Categories.Add(categories);
+            category.CategoryStatus = true;
+            ProductTrackEntities.TBL_Categories.Add(category);
             ProductTrackEntities.SaveChanges();
             
-            return View();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult LoadCategory(int id)
+        {
+            return View("LoadCategory", ProductTrackEntities.TBL_Categories.Find(id));
+        }
+
+        public ActionResult UpdateCategory(TBL_Categories category)
+        {
+            TBL_Categories updatedCategory = ProductTrackEntities.TBL_Categories.Find(category.CategoryID);
+            updatedCategory.CategoryName = category.CategoryName;
+            ProductTrackEntities.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult PacifyCategory(int id)
+        {
+            TBL_Categories updatedCategory = ProductTrackEntities.TBL_Categories.Find(id);
+            updatedCategory.CategoryStatus = false;
+            ProductTrackEntities.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult ActivateCategory(int id)
+        {
+            TBL_Categories updatedCategory = ProductTrackEntities.TBL_Categories.Find(id);
+            updatedCategory.CategoryStatus = true;
+            ProductTrackEntities.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }
