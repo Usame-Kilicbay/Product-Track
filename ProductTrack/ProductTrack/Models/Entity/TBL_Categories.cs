@@ -22,6 +22,7 @@ namespace ProductTrack.Models.Entity
     
         public short CategoryID { get; set; }
         public string CategoryName { get; set; }
+        public bool CategoryStatus { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_Products> TBL_Products { get; set; }

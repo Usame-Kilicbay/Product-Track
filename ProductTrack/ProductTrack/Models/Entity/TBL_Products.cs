@@ -24,6 +24,7 @@ namespace ProductTrack.Models.Entity
         public string ProductName { get; set; }
         public Nullable<short> ProductCategory { get; set; }
         public Nullable<decimal> ProductPrice { get; set; }
+        public Nullable<bool> ProductStatus { get; set; }
     
         public virtual TBL_Categories TBL_Categories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

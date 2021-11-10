@@ -227,6 +227,11 @@
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Category\AddNewCategory.cshtml" />
     <Content Include="Views\Product\AddNewProduct.cshtml" />
+    <Content Include="Views\Product\LoadProduct.cshtml" />
+    <Content Include="Views\Product\UpdateProduct.cshtml" />
+    <Content Include="Views\Category\LoadCategory.cshtml" />
+    <Content Include="Views\Customer\AddNewCustomer.cshtml" />
+    <Content Include="Views\Customer\LoadCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
