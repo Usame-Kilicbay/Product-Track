@@ -28,15 +28,15 @@ namespace ProductTrack.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddNewProduct(TBL_Products products)
+        public ActionResult AddNewProduct(TBL_Products product)
         {
             if (!ModelState.IsValid)
                 return View("AddNewProduct");
 
-            TBL_Categories category = productTrackEntities.TBL_Categories.Where(c => c.CategoryID == products.TBL_Categories.CategoryID).FirstOrDefault();
-            products.TBL_Categories = category;
-            category.CategoryStatus = true;
-            productTrackEntities.TBL_Products.Add(products);
+            TBL_Categories category = productTrackEntities.TBL_Categories.Where(c => c.CategoryID == product.TBL_Categories.CategoryID).FirstOrDefault();
+            product.TBL_Categories = category;
+            product.ProductStatus = true;
+            productTrackEntities.TBL_Products.Add(product);
             productTrackEntities.SaveChanges();
 
             return RedirectToAction("Index");
